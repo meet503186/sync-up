@@ -35,6 +35,7 @@ const audioPlayer = document.getElementById("audio-player");
 
 const syncWithFirebase = (fbRef) => {
   onValue(fbRef, (snapshot) => {
+    console.log(snapshot.val());
     if (!!snapshot.val()) {
       return audioPlayer.play();
     }
@@ -54,4 +55,4 @@ audioPlayer.onpause = () => {
   setDataInFirebase(isPlayingRef, false);
 };
 
-syncWithFirebase();
+syncWithFirebase(isPlayingRef);
